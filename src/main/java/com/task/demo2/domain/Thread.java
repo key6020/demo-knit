@@ -36,6 +36,7 @@ public class Thread extends TimeEntity {
 
     @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL)
     @Column(nullable = false)
+    @Builder.Default
     private List<UserThread> userThreadList = new ArrayList<>();
 
     public void updateContent(String content) {

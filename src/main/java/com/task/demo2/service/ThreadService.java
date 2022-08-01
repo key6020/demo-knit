@@ -86,7 +86,8 @@ public class ThreadService {
                 .status(ThreadStatus.WAITING)
                 .build();
         threadRepository.save(thread);
-        userThreadRepository.save(UserThread.builder().user(user).thread(thread).build());
+        UserThread userThread = UserThread.builder().user(user).thread(thread).build();
+        userThreadRepository.save(userThread);
 
         return CommonResponse.response(HttpStatus.OK.value(), "Thread 신청 완료");
     }
