@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .formLogin().disable()
                 .authorizeHttpRequests()
-                .antMatchers("/v1/**", "/h2-console/**", "/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs").permitAll()
+                .antMatchers("/v1/**", "/h2-console/**").permitAll()
                 .anyRequest()
                 .authenticated();
     }
@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs", "/v1/user/signup", "/v1/user/login", "/actuator/health", "/upload", "/v1/threads/list", "/v1/thread/**")
+                .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs", "/webjars/**", "/v1/user/signup", "/v1/user/login", "/actuator/health", "/upload", "/v1/threads/list", "/v1/thread/**")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 }
